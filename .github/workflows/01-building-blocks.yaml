@@ -22,10 +22,13 @@ jobs:
           echo "I will fail"
           exit 1
 
-      - name: Check Step Status
-        run: |
-          echo "Outcome: ${{ steps.failed_step.outcome }}"
-          echo "Conclusion: ${{ steps.failed_step.conclusion }}"
+      - name: Handle Failure
+        if: ${{ steps.failed_step.outcome == 'failure' }}
+        run: echo "Previous step failed. Handling failure."
+
+      - name: Handle Success
+        if: ${{ steps.failed_step.outcome == 'success' }}
+        run: echo "Previous step succeeded."
 
       - name: Say Goodbye
         run: echo "Goodbye World"
