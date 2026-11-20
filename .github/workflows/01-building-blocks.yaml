@@ -11,8 +11,14 @@ jobs:
       - name: Say Hello
         run: echo "Hello World"
 
+  
   echo-goodbye:
     runs-on: ubuntu-latest
     steps:
+      - name: Multiple Commands
+        run: |
+          echo "First command"
+          echo "Second command"
+          echo "Both commands succeeded"
       - name: Say Goodbye
         run: echo "Goodbye World"
