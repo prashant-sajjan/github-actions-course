@@ -15,10 +15,10 @@ jobs:
   echo-goodbye:
     runs-on: ubuntu-latest
     steps:
-      - name: Multiple Commands
+      - name: Failed Step
         run: |
-          echo "First command"
-          echo "Second command"
-          echo "Both commands succeeded"
+          echo "I will fail"
+          exit 1
+
       - name: Say Goodbye
         run: echo "Goodbye World"
