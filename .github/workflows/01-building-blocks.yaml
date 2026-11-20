@@ -16,10 +16,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Failed Step
+        id: failed_step
         continue-on-error: true
         run: |
           echo "I will fail"
           exit 1
+
+      - name: Check Step Status
+        run: |
+          echo "Outcome: ${{ steps.failed_step.outcome }}"
+          echo "Conclusion: ${{ steps.failed_step.conclusion }}"
 
       - name: Say Goodbye
         run: echo "Goodbye World"
